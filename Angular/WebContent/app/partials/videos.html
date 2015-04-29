@@ -1,0 +1,34 @@
+<div>
+
+    <form class="form-inline" role="form">
+        <div class="form-group">
+          <label>Search</label> &nbsp;
+            <input type="text" data-ng-model="query" class="form-control" /> 
+           
+        </div>
+    </form>
+    <div class="container">
+
+    <nav class="nav navbar-nav navbar-left">
+      <ul class="pagination pagination-lg" data-ng-repeat="p in pages" >
+          <li><button class="btn btn-link" data-ng-bind="p" data-ng-click="getByPage(p)"></button> |</li>
+      </ul>
+  </nav>
+      
+    </div>
+
+    <table class="table table-hover">
+        <tr>
+            <th>Id</th>
+            <th><button class="btn btn-link" data-ng-click="sortVideos()">Title</button></th>
+            <th>Description</th>
+            <th>Logo</th>
+        </tr>
+        <tr data-ng-repeat="video in videos | filter:query">
+            <td>{{video.id}}</td>
+            <td>{{video.title}}</td>
+            <td>{{video.shortDescription}}</td>
+            <td><img data-ng-src="{{video.links['logo-image']}}" /></td>
+        </tr>
+    </table>
+</div>
